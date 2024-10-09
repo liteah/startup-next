@@ -1,25 +1,29 @@
-"use client"
-
 import Link from "next/link"
-import { usePathname } from "next/navigation"
-import app from "@/constants"
-import { cn } from "@/lib/utils"
-import SelectLanguage from "@/components/header/select-language"
-
-import {
+import{
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink,
   navigationMenuTriggerStyle,
-  NavigationMenuTrigger,
-  NavigationMenuContent,
 } from "@/components/ui/navigation-menu"
+import { cn } from "@/lib/utils"
+import app from "@/constants"
+import SelectLanguage from "@/components/header/select-language"
+import DrawerHeader from "@/components/header/drawer"
 
 export default function Header() {
-	const pathname = usePathname()
 	const headerClass = cn(
-		"left-0 top-0 z-50 h-14 border-b border-gray-200/75 bg-white/75 backdrop-blur-md flex items-center justify-center",
+		"left-0",
+    "top-0",
+    "z-50",
+    "h-14",
+    "border-b",
+    "border-gray-200/75",
+    "bg-white/75",
+    "backdrop-blur-md",
+    "flex",
+    "items-center",
+    "justify-center",
 	)
 	return (
 		<header className={headerClass}>
@@ -39,7 +43,7 @@ export default function Header() {
                   <NavigationMenuItem key={item.href}>
 								  	<Link href={item.href} legacyBehavior passHref>
 								  		<NavigationMenuLink
-                        className={navigationMenuTriggerStyle()}
+                        className={`${navigationMenuTriggerStyle()} bg-opacity-75`}
                       >
 								  			{item.code}
 								  		</NavigationMenuLink>
@@ -53,6 +57,9 @@ export default function Header() {
         <div className='hidden lg:flex items-center gap-x-3'>
 					<SelectLanguage />
 				</div>
+        <div className='flex items-center gap-x-3 lg:hidden'>
+          <DrawerHeader />
+        </div>
 			</nav>
 		</header>
 	)
