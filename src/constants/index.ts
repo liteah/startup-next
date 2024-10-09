@@ -3,6 +3,9 @@ const appConfig = {
 	domain: "https://starter.conova.tech",
 	canonical: false,
 	header: {
+		// Only in the large screen header
+		showLanguage: true,
+		showTheme: true,
 		links: [
 			{
 				code: "blog",

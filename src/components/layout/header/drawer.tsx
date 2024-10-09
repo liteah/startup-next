@@ -4,8 +4,8 @@ import { ChevronRight, Menu } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer"
-import SelectLanguage from "@/components/header/select-language"
-import ToggleTheme from "@/components/header/toggle-theme"
+import SelectLanguage from "@/components/layout/select-language"
+import ToggleTheme from "@/components/layout/toggle-theme"
 
 export default function DrawerHeader() {
 	const headerPanelTriggerClass = cn(
@@ -25,18 +25,18 @@ export default function DrawerHeader() {
 				<Menu />
 			</DrawerTrigger>
 			<DrawerContent>
-				<div className="m-6 space-y-8 lg:hidden">
-					<nav className="grid items-start gap-2.5 font-medium">
+				<div className='m-6 space-y-8 lg:hidden'>
+					<nav className='grid items-start gap-2.5 font-medium'>
 						{app.header.links.map((item, index) => (
 							<Link key={index} href={item.href} className={headerPanelTriggerClass}>
 								{item.code}
-								<span className="ml-1">
+								<span className='ml-1'>
 									<ChevronRight size={16} />
 								</span>
 							</Link>
 						))}
 					</nav>
-					<nav className="flex w-full items-center gap-2.5">
+					<nav className='flex w-full items-center gap-2.5'>
 						<SelectLanguage />
 						<ToggleTheme />
 					</nav>

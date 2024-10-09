@@ -7,7 +7,7 @@ import "@/app/[locale]/globals.css"
 import app from "@/constants"
 import { locales } from "@/i18n"
 
-import ThemeProvider from "@/components/theme-provider"
+import ThemeProvider from "@/components/layout/theme-provider"
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
 	const t = await getTranslations({ locale, namespace: "metadata" })
@@ -30,16 +30,16 @@ export default function RootLayout({
 	return (
 		<html lang={locale} suppressHydrationWarning>
 			<head>
-				{app.canonical && <link rel="canonical" href={app.domain} />}
-				<link rel="alternate" hrefLang="en" href={`${app.domain}/`} />
+				{app.canonical && <link rel='canonical' href={app.domain} />}
+				<link rel='alternate' hrefLang='en' href={`${app.domain}/`} />
 				{locales.map((lang) => (
-					<link key={lang} rel="alternate" hrefLang={lang} href={`${app.domain}/${lang}`} />
+					<link key={lang} rel='alternate' hrefLang={lang} href={`${app.domain}/${lang}`} />
 				))}
-				<link rel="alternate" hrefLang="x-default" href={app.domain} />
+				<link rel='alternate' hrefLang='x-default' href={app.domain} />
 			</head>
 			<body>
 				<NextIntlClientProvider locale={locale} messages={messages}>
-					<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+					<ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
 						{children}
 					</ThemeProvider>
 				</NextIntlClientProvider>
