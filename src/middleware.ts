@@ -1,11 +1,10 @@
-import { type NextRequest } from 'next/server'
-
-import intl from '@/middlewares/intl'
+import { type NextRequest } from "next/server"
+import intl from "@/middlewares/intl"
 
 export default function middleware(request: NextRequest) {
-  return intl(request);
+	return intl(request)
 }
 
 export const config = {
-  matcher: ['/((?!api|_next|.*\\..*).*)'],
-};
+	matcher: ["/((?!api|_next|.*\\..*).*)"],
+}
