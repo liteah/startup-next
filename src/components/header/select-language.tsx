@@ -21,7 +21,7 @@ export default function LocaleSwitcher() {
 	const pathname = usePathname()
 	const router = useRouter()
 
-  const currentLanguageLabel = languages.find(language => language.lang === currentLocale)?.label || ''
+	const currentLanguageLabel = languages.find((language) => language.lang === currentLocale)?.label || ""
 	const [localeVal, setLocaleVal] = useState(currentLocale)
 
 	const onValueChange = (newLocale: string) => {
@@ -31,11 +31,11 @@ export default function LocaleSwitcher() {
 
 	return (
 		<Select value={localeVal} defaultValue={currentLocale} onValueChange={onValueChange}>
-			<SelectTrigger className='flex w-full items-center gap-1 px-2 focus:ring-0'>
+			<SelectTrigger className="flex w-full items-center gap-1 px-2 focus:ring-0">
 				<Globe size={16} />
-				<SelectValue placeholder='locale' className='text-sm'>
-          {currentLanguageLabel}
-        </SelectValue>
+				<SelectValue placeholder="locale" className="text-sm">
+					{currentLanguageLabel}
+				</SelectValue>
 			</SelectTrigger>
 			<SelectContent>
 				<SelectGroup>

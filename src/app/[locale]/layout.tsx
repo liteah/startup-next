@@ -7,6 +7,8 @@ import "@/app/[locale]/globals.css"
 import app from "@/constants"
 import { locales } from "@/i18n"
 
+import ThemeProvider from "@/components/theme-provider"
+
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
 	const t = await getTranslations({ locale, namespace: "metadata" })
 
@@ -37,7 +39,9 @@ export default function RootLayout({
 			</head>
 			<body>
 				<NextIntlClientProvider locale={locale} messages={messages}>
-					{children}
+					<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+						{children}
+					</ThemeProvider>
 				</NextIntlClientProvider>
 			</body>
 		</html>
