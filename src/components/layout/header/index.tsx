@@ -15,49 +15,43 @@ import ToggleTheme from "@/components/layout/toggle-theme"
 
 export default function Header() {
 	const headerClass = cn(
-		"left-0",
+		"bg-background/55",
+		"backdrop-blur",
+		"border-b",
+		"sticky",
 		"top-0",
 		"z-50",
-		"h-14",
-		"border-b",
-		"bg-white/75",
-		"dark:bg-black/75",
-		"backdrop-blur-md",
-		"flex",
-		"items-center",
-		"justify-center",
 	)
 	return (
 		<header className={headerClass}>
-			<nav className='mx-auto flex w-full items-center justify-between p-3'>
-				<div className='flex items-center gap-x-2'>
-					<Link className='opacity-75 transition-opacity hover:opacity-100' href='/'>
-						<span className='text-xl font-bold'>{app.name}</span>
-					</Link>
+			<nav className='flex justify-between items-center mx-auto p-3 max-w-7xl'>
+				<Link href='/' className='lg:flex-1 flex items-center gap-1.5'>
+					{app.logo}
+					<span className='text-xl font-bold'>{app.name}</span>
+				</Link>
+				<div className='hidden lg:flex'>
+					<NavigationMenu>
+						<NavigationMenuList className='flex space-x-2'>
+							{app.header.links.map((item) => (
+								<NavigationMenuItem key={item.href}>
+									<Link href={item.href} legacyBehavior passHref>
+										<NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-opacity-75`}>
+											{item.code}
+										</NavigationMenuLink>
+									</Link>
+								</NavigationMenuItem>
+							))}
+						</NavigationMenuList>
+					</NavigationMenu>
 				</div>
-				<div className='flex h-full flex-grow items-center justify-center'>
-					<div className='hidden lg:flex'>
-						<NavigationMenu>
-							<NavigationMenuList className='flex space-x-4'>
-								{app.header.links.map((item) => (
-									<NavigationMenuItem key={item.href}>
-										<Link href={item.href} legacyBehavior passHref>
-											<NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-opacity-75`}>
-												{item.code}
-											</NavigationMenuLink>
-										</Link>
-									</NavigationMenuItem>
-								))}
-							</NavigationMenuList>
-						</NavigationMenu>
+				<div className='flex items-center justify-end lg:flex-1 gap-1.5'>
+					<div className='hidden lg:flex gap-2'>
+						{app.header.showLanguage && <SelectLanguage />}
+						{app.header.showTheme && <ToggleTheme />}
 					</div>
-				</div>
-				<div className='hidden items-center gap-x-2 lg:flex'>
-					{app.header.showLanguage && <SelectLanguage />}
-					{app.header.showTheme && <ToggleTheme />}
-				</div>
-				<div className='flex items-center gap-x-3 lg:hidden'>
-					<DrawerHeader />
+					<div className='flex lg:hidden'>
+						<DrawerHeader />
+					</div>
 				</div>
 			</nav>
 		</header>
