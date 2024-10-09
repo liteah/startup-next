@@ -13,23 +13,23 @@ export default function ToggleTheme() {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button variant='outline' size='icon' className='w-12 focus-visible:ring-0'>
-					<Sun size={16} className='block w-full dark:hidden' />
-					<Moon size={16} className='hidden w-full dark:block' />
-					<span className='sr-only'>Toggle theme</span>
+				<Button variant="outline" size="icon" className="w-12 focus-visible:ring-0">
+					<Sun size={16} className="block w-full dark:hidden" />
+					<Moon size={16} className="hidden w-full dark:block" />
+					<span className="sr-only">Toggle theme</span>
 				</Button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align='end'>
+			<DropdownMenuContent align="end">
 				<DropdownMenuItem onClick={() => setTheme("light")}>
-					<Sun className='mr-2 h-4 w-4' />
+					<Sun className="mr-2 h-4 w-4" />
 					Light
 				</DropdownMenuItem>
 				<DropdownMenuItem onClick={() => setTheme("dark")}>
-					<Moon className='mr-2 h-4 w-4' />
+					<Moon className="mr-2 h-4 w-4" />
 					Dark
 				</DropdownMenuItem>
 				<DropdownMenuItem onClick={() => setTheme("system")}>
-					<MonitorSmartphone className='mr-2 h-4 w-4' />
+					<MonitorSmartphone className="mr-2 h-4 w-4" />
 					System
 				</DropdownMenuItem>
 			</DropdownMenuContent>

@@ -30,16 +30,16 @@ export default function RootLayout({
 	return (
 		<html lang={locale} suppressHydrationWarning>
 			<head>
-				{app.canonical && <link rel='canonical' href={app.domain} />}
-				<link rel='alternate' hrefLang='en' href={`${app.domain}/`} />
+				{app.canonical && <link rel="canonical" href={app.domain} />}
+				<link rel="alternate" hrefLang="en" href={`${app.domain}/`} />
 				{locales.map((lang) => (
-					<link key={lang} rel='alternate' hrefLang={lang} href={`${app.domain}/${lang}`} />
+					<link key={lang} rel="alternate" hrefLang={lang} href={`${app.domain}/${lang}`} />
 				))}
-				<link rel='alternate' hrefLang='x-default' href={app.domain} />
+				<link rel="alternate" hrefLang="x-default" href={app.domain} />
 			</head>
 			<body>
 				<NextIntlClientProvider locale={locale} messages={messages}>
-					<ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
+					<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 						{children}
 					</ThemeProvider>
 				</NextIntlClientProvider>
