@@ -1,13 +1,12 @@
-import createMiddleware from 'next-intl/middleware';
+import { locales } from "@/i18n"
+import createMiddleware from "next-intl/middleware"
 
-import { localePrefix } from '@/app/navigation';
-
-import { locales } from '@/i18n';
+import { localePrefix } from "@/app/navigation"
 
 const intl = createMiddleware({
-  locales,
-  defaultLocale: 'en',
-  localePrefix,
-});
+	locales,
+	defaultLocale: "en",
+	localePrefix,
+})
 
-export default intl;
+export default intl
