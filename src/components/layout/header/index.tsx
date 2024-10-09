@@ -14,24 +14,17 @@ import SelectLanguage from "@/components/layout/select-language"
 import ToggleTheme from "@/components/layout/toggle-theme"
 
 export default function Header() {
-	const headerClass = cn(
-		"bg-background/55",
-		"backdrop-blur",
-		"border-b",
-		"sticky",
-		"top-0",
-		"z-50",
-	)
+	const headerClass = cn("bg-background/55", "backdrop-blur", "border-b", "sticky", "top-0", "z-50")
 	return (
 		<header className={headerClass}>
-			<nav className='flex justify-between items-center mx-auto p-3 max-w-7xl'>
-				<Link href='/' className='lg:flex-1 flex items-center gap-1.5'>
+			<nav className="mx-auto flex max-w-7xl items-center justify-between p-3">
+				<Link href="/" className="flex items-center gap-1.5 lg:flex-1">
 					{app.logo}
-					<span className='text-xl font-bold'>{app.name}</span>
+					<span className="text-xl font-bold">{app.name}</span>
 				</Link>
-				<div className='hidden lg:flex'>
+				<div className="hidden lg:flex">
 					<NavigationMenu>
-						<NavigationMenuList className='flex space-x-2'>
+						<NavigationMenuList className="flex space-x-2">
 							{app.header.links.map((item) => (
 								<NavigationMenuItem key={item.href}>
 									<Link href={item.href} legacyBehavior passHref>
@@ -44,12 +37,12 @@ export default function Header() {
 						</NavigationMenuList>
 					</NavigationMenu>
 				</div>
-				<div className='flex items-center justify-end lg:flex-1 gap-1.5'>
-					<div className='hidden lg:flex gap-2'>
+				<div className="flex items-center justify-end gap-1.5 lg:flex-1">
+					<div className="hidden gap-2 lg:flex">
 						{app.header.showLanguage && <SelectLanguage />}
 						{app.header.showTheme && <ToggleTheme />}
 					</div>
-					<div className='flex lg:hidden'>
+					<div className="flex lg:hidden">
 						<DrawerHeader />
 					</div>
 				</div>
