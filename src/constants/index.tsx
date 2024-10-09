@@ -1,9 +1,11 @@
+import { Rocket } from "lucide-react"
+
 const appConfig = {
 	name: "Next Starter",
+	logo: <Rocket />,
 	domain: "https://starter.conova.tech",
 	canonical: false,
 	header: {
-		// Only in the large screen header
 		showLanguage: true,
 		showTheme: true,
 		links: [
