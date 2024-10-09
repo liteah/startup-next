@@ -8,11 +8,6 @@ export const languages = [
 		label: "English",
 	},
 	{
-		code: "ja-JP",
-		lang: "jp",
-		label: "日本語",
-	},
-	{
 		code: "de-DE",
 		lang: "de",
 		label: "Deutsch",
@@ -46,6 +41,11 @@ export const languages = [
 		code: "zh-TW",
 		lang: "tw",
 		label: "繁體中文",
+	},
+	{
+		code: "ja-JP",
+		lang: "jp",
+		label: "日本語",
 	},
 	{
 		code: "ko-KR",
