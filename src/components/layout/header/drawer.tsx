@@ -1,5 +1,5 @@
 import Link from "next/link"
-import app from "@/constants"
+import constant from "@/constants"
 import { ChevronRight, Menu } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -27,7 +27,7 @@ export default function DrawerHeader() {
 			<DrawerContent>
 				<div className="m-6 space-y-8 lg:hidden">
 					<nav className="grid items-start gap-2.5 font-medium">
-						{app.header.links.map((item, index) => (
+						{constant.header.links.map((item, index) => (
 							<Link key={index} href={item.href} className={headerPanelTriggerClass}>
 								{item.code}
 								<span className="ml-1">

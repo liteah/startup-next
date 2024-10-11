@@ -1,16 +1,16 @@
-import app from "@/constants"
+import constant from "@/constants"
 import { useTranslations } from "next-intl"
 
 import Marquee from "@/components/magicui/marquee"
 
 export default function Logo() {
 	const t = useTranslations("pages.home.hero")
-	const logos = app.pages.home.hero.logo.src
+	const logos = constant.pages.home.hero.logo.src
 
 	return (
 		<div className="group relative mx-auto">
 			<h3 className="text-center text-sm font-semibold text-gray-500">
-				{app.useI18n ? t(app.pages.home.hero.logo.labelCode) : app.pages.home.hero.logo.label}
+				{constant.useI18n ? t(constant.pages.home.hero.logo.labelCode) : constant.pages.home.hero.logo.label}
 			</h3>
 			<div className="relative mt-6 block max-w-xs md:max-w-md lg:max-w-screen-md xl:max-w-screen-lg">
 				<Marquee

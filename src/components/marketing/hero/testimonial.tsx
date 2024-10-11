@@ -1,4 +1,4 @@
-import app from "@/constants"
+import constant from "@/constants"
 import { useTranslations } from "next-intl"
 
 import AvatarCircles from "@/components/magicui/avatar-circles"
@@ -8,9 +8,9 @@ export default function Testimonial() {
 	const t = useTranslations("pages.home.hero")
 	return (
 		<div className="flex flex-col items-center gap-1.5">
-			<AvatarCircles numPeople={99} avatarUrls={app.pages.home.hero.avatars.urls} />
+			<AvatarCircles numPeople={99} avatarUrls={constant.pages.home.hero.avatars.urls} />
 			<p className="text-sm text-muted-foreground">
-				{app.useI18n ? t(app.pages.home.hero.avatars.descriptionCode) : app.pages.home.hero.avatars.description}
+				{constant.useI18n ? t(constant.pages.home.hero.avatars.descriptionCode) : constant.pages.home.hero.avatars.description}
 			</p>
 			<Rating />
 		</div>

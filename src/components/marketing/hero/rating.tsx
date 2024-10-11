@@ -1,10 +1,10 @@
-import app from "@/constants"
+import constant from "@/constants"
 import { Star, StarHalf } from "lucide-react"
 
 import NumberTicker from "@/components/magicui/number-ticker"
 
 export default function Rating() {
-	const rating = app.pages.home.hero.rating
+	const rating = constant.pages.home.hero.rating
 
 	function renderStars() {
 		const stars = []

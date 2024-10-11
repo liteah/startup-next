@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server"
 
 import "@/app/globals.css"
 
-import app from "@/constants"
+import constant from "@/constants"
 import { locales } from "@/i18n"
 
 import ThemeProvider from "@/components/layout/theme-provider"
@@ -30,12 +30,12 @@ export default function RootLayout({
 	return (
 		<html lang={locale} suppressHydrationWarning>
 			<head>
-				{app.canonical && <link rel="canonical" href={app.domain} />}
-				<link rel="alternate" hrefLang="en" href={`${app.domain}/`} />
+				{constant.canonical && <link rel="canonical" href={constant.domain} />}
+				<link rel="alternate" hrefLang="en" href={`${constant.domain}/`} />
 				{locales.map((lang) => (
-					<link key={lang} rel="alternate" hrefLang={lang} href={`${app.domain}/${lang}`} />
+					<link key={lang} rel="alternate" hrefLang={lang} href={`${constant.domain}/${lang}`} />
 				))}
-				<link rel="alternate" hrefLang="x-default" href={app.domain} />
+				<link rel="alternate" hrefLang="x-default" href={constant.domain} />
 			</head>
 			<body>
 				<NextIntlClientProvider locale={locale} messages={messages}>
