@@ -1,5 +1,5 @@
 import Link from "next/link"
-import app from "@/constants"
+import constant from "@/constants"
 
 import { cn } from "@/lib/utils"
 import {
@@ -19,13 +19,13 @@ export default function Header() {
 		<header className={headerClass}>
 			<nav className="mx-auto flex max-w-7xl items-center justify-between p-3">
 				<Link href="/" className="flex items-center gap-1.5 lg:flex-1">
-					{app.logo}
-					<span className="text-xl font-bold">{app.name}</span>
+					{constant.logo}
+					<span className="text-xl font-bold">{constant.name}</span>
 				</Link>
 				<div className="hidden lg:flex">
 					<NavigationMenu>
 						<NavigationMenuList className="flex space-x-2">
-							{app.header.links.map((item) => (
+							{constant.header.links.map((item) => (
 								<NavigationMenuItem key={item.href}>
 									<Link href={item.href} legacyBehavior passHref>
 										<NavigationMenuLink
@@ -44,8 +44,8 @@ export default function Header() {
 				</div>
 				<div className="flex items-center justify-end gap-1.5 lg:flex-1">
 					<div className="hidden gap-2 lg:flex">
-						{app.header.showLanguage && <SelectLanguage />}
-						{app.header.showTheme && <ToggleTheme />}
+						{constant.header.showLanguage && <SelectLanguage />}
+						{constant.header.showTheme && <ToggleTheme />}
 					</div>
 					<div className="flex lg:hidden">
 						<DrawerHeader />
