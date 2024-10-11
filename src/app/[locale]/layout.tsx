@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { NextIntlClientProvider, useMessages } from "next-intl"
 import { getTranslations } from "next-intl/server"
 
-import "@/app/[locale]/globals.css"
+import "@/app/globals.css"
 
 import app from "@/constants"
 import { locales } from "@/i18n"
