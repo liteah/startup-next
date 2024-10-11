@@ -15,7 +15,9 @@ export default function Button() {
 			</Link>
 			{constant.pages.home.hero.cta.showDescription && (
 				<p className="text-xs text-muted-foreground">
-					{constant.useI18n ? t(constant.pages.home.hero.cta.descriptionCode) : constant.pages.home.hero.cta.description}
+					{constant.useI18n
+						? t(constant.pages.home.hero.cta.descriptionCode)
+						: constant.pages.home.hero.cta.description}
 				</p>
 			)}
 		</>

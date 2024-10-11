@@ -80,6 +80,14 @@ const appConfig = {
 					],
 				},
 			},
+			section: [
+				{
+					headline: "Features",
+					title: "What we offer",
+					headlineCode: "features.headline",
+					titleCode: "features.title",
+				},
+			],
 		},
 	},
 }
