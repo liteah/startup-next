@@ -31,17 +31,17 @@ export default function LocaleSwitcher() {
 
 	return (
 		<Select value={localeVal} defaultValue={currentLocale} onValueChange={onValueChange}>
-			<SelectTrigger className="flex w-full items-center gap-1 px-2 focus:ring-0">
+			<SelectTrigger className="flex gap-0.5 bg-background/10 px-1.5 backdrop-blur-md focus:ring-0">
 				<Globe size={16} />
-				<SelectValue placeholder="locale" className="text-sm">
+				<SelectValue placeholder="locale" className="text-xs">
 					{currentLanguageLabel}
 				</SelectValue>
 			</SelectTrigger>
-			<SelectContent>
+			<SelectContent className="bg-background/85 backdrop-blur-md">
 				<SelectGroup>
 					<SelectLabel>Language</SelectLabel>
 					{languages.map((language) => (
-						<SelectItem value={language.lang} key={language.code}>
+						<SelectItem value={language.lang} key={language.code} className="focus:bg-accent/40">
 							{language.label}
 						</SelectItem>
 					))}

@@ -28,7 +28,12 @@ export default function Header() {
 							{app.header.links.map((item) => (
 								<NavigationMenuItem key={item.href}>
 									<Link href={item.href} legacyBehavior passHref>
-										<NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-opacity-75`}>
+										<NavigationMenuLink
+											className={cn(
+												navigationMenuTriggerStyle(),
+												"bg-transparent transition-colors hover:bg-primary/10",
+											)}
+										>
 											{item.code}
 										</NavigationMenuLink>
 									</Link>
