@@ -88,6 +88,16 @@ const appConfig = {
 					titleCode: "features.title",
 				},
 			],
+			cta: {
+				icon: <Rocket />,
+				title: "Ship more, earn more today",
+				titleCode: "cta.title",
+				description: "Start your 7-day free trial today and see how NitroStart can help you ship your product faster.",
+				descriptionCode: "cta.description",
+				link: "/signup",
+				button: "Get Started for Free",
+				buttonCode: "cta.button",
+			}
 		},
 	},
 }
