@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@hookform/resolvers": "^3.3.4",
+    "@hookform/resolvers": "^3.9.0",
     "@node-rs/argon2": "^1.8.0",
     "@node-rs/bcrypt": "^1.10.0",
     "@radix-ui/react-accordion": "^1.1.2",
