@@ -1,7 +1,0 @@
-*.json
-*.md
-*.css
-src/components/magicui/
-src/components/ui/
-pnpm-lock.yaml
-pnpm-workspace.yaml
