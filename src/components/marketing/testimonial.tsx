@@ -88,7 +88,7 @@ export default function MarqueeDemo() {
 					}
 				/>
 			</BlurFade>
-			<div className="relative mt-6 block max-w-xs md:max-w-md lg:max-w-screen-lg xl:max-w-screen-xl">
+			<div className="relative mt-6 block max-w-sm md:max-w-md lg:max-w-screen-lg xl:max-w-screen-xl">
 				<BlurFade delay={0.35 * 7}>
 					<Marquee className="mx-4 [--duration:20s]">
 						{firstRow.map((review) => (

@@ -1,3 +1,4 @@
+import FAQ from "@/components/marketing/faq"
 import Features from "@/components/marketing/features"
 import Hero from "@/components/marketing/hero"
 import Testimonial from "@/components/marketing/testimonial"
@@ -8,6 +9,7 @@ export default function Home() {
 			<Hero />
 			<Features />
 			<Testimonial />
+			<FAQ />
 		</div>
 	)
 }

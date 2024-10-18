@@ -100,6 +100,26 @@ const appConfig = {
 				headlineCode: "testimonial.headline",
 				titleCode: "testimonial.title",
 			},
+			faq: {
+				headline: "FAQ",
+				title: "Frequently Asked Questions",
+				headlineCode: "faq.headline",
+				titleCode: "faq.title",
+				list: [
+					{
+						question: "What is NitroStart?",
+						answer: "NitroStart is a powerful starter kit for build your web SaaS with Next.js, Shadcn/UI and more.",
+					},
+					{
+						question: "What is NitroStart?",
+						answer: "NitroStart is a powerful starter kit for build your web SaaS with Next.js, Shadcn/UI and more.",
+					},
+					{
+						question: "What is NitroStart?",
+						answer: "NitroStart is a powerful starter kit for build your web SaaS with Next.js, Shadcn/UI and more.",
+					},
+				],
+			},
 		},
 	},
 }
