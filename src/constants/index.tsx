@@ -192,6 +192,59 @@ const appConfig = {
 	email: {
 		support: "support@conova.tech",
 	},
+	pricing: {
+		yearlySave: "-20%",
+		plans: [
+			{
+				name: "Starter",
+				description: "For users who want to get started with a simple and affordable plan.",
+				descriptionCode: "plans.starter.description",
+				popluar: false,
+				price: {
+					yearly: 29,
+					monthly: 35,
+				},
+				features: [
+					"Unlimited placeholder text",
+					"Consectetur adipiscing elit",
+					"Excepteur sint occaecat cupidatat",
+					"Officia deserunt mollit anim",
+				],
+			},
+			{
+				name: "Pro",
+				description: "For users who want to get started with a simple and affordable plan.",
+				descriptionCode: "plans.pro.description",
+				popluar: true,
+				price: {
+					yearly: 49,
+					monthly: 55,
+				},
+				features: [
+					"Unlimited placeholder text",
+					"Consectetur adipiscing elit",
+					"Excepteur sint occaecat cupidatat",
+					"Officia deserunt mollit anim",
+				],
+			},
+			{
+				name: "Enterprise",
+				description: "For users who want to get started with a simple and affordable plan.",
+				descriptionCode: "plans.enterprise.description",
+				popluar: false,
+				price: {
+					yearly: 99,
+					monthly: 110,
+				},
+				features: [
+					"Unlimited placeholder text",
+					"Consectetur adipiscing elit",
+					"Excepteur sint occaecat cupidatat",
+					"Officia deserunt mollit anim",
+				],
+			},
+		],
+	},
 }
 
 export default appConfig
