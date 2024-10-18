@@ -8,7 +8,7 @@ import SectionTitle from "@/components/marketing/section-title"
 export default function FAQ() {
 	const t = useTranslations("pages.home.faq")
 	return (
-		<section className="mx-auto flex flex-col gap-8 justify-center items-center">
+		<section className="mx-auto flex flex-col items-center justify-center gap-8">
 			<BlurFade delay={0.35} inView>
 				<SectionTitle
 					headline={constant.useI18n ? t(constant.pages.home.faq.headlineCode) : constant.pages.home.faq.headline}

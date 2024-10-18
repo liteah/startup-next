@@ -11,14 +11,81 @@ const appConfig = {
 		showTheme: true,
 		links: [
 			{
-				code: "blog",
-				label: "Blog",
-				href: "/blog",
+				code: "home",
+				label: "Home",
+				href: "/",
+			},
+			{
+				code: "features",
+				label: "Features",
+				href: "/features",
 			},
 			{
 				code: "pricing",
 				label: "Pricing",
 				href: "/pricing",
+			},
+		],
+	},
+	footer: {
+		links: [
+			{
+				group: "Product",
+				code: "product",
+				list: [
+					{
+						code: "product.features",
+						label: "Features",
+						href: "/features",
+					},
+					{
+						code: "product.pricing",
+						label: "Pricing",
+						href: "/pricing",
+					},
+					{
+						code: "product.changelog",
+						label: "Changelog",
+						href: "/changelog",
+					},
+					{
+						code: "product.roadmap",
+						label: "Roadmap",
+						href: "/roadmap",
+					},
+				],
+			},
+			{
+				group: "Resources",
+				code: "resources",
+				list: [
+					{
+						code: "resources.blog",
+						label: "Blog",
+						href: "/blog",
+					},
+					{
+						code: "resources.docs",
+						label: "Docs",
+						href: "/docs",
+					},
+				],
+			},
+			{
+				group: "Legal",
+				code: "legal",
+				list: [
+					{
+						code: "legal.terms",
+						label: "Terms of Service",
+						href: "/terms",
+					},
+					{
+						code: "legal.privacy",
+						label: "Privacy Policy",
+						href: "/privacy",
+					},
+				],
 			},
 		],
 	},
@@ -121,6 +188,9 @@ const appConfig = {
 				],
 			},
 		},
+	},
+	email: {
+		support: "support@conova.tech",
 	},
 }
 
