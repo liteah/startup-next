@@ -7,8 +7,9 @@ const appConfig = {
 	useI18n: false,
 	canonical: false,
 	header: {
-		showLanguage: true,
-		showTheme: true,
+		showLanguage: false,
+		showTheme: false,
+		showAuth: true,
 		links: [
 			{
 				code: "home",

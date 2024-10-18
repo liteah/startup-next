@@ -9,6 +9,7 @@ import {
 	NavigationMenuList,
 	navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import Auth from "@/components/layout/header/auth"
 import DrawerHeader from "@/components/layout/header/drawer"
 import SelectLanguage from "@/components/layout/select-language"
 import ToggleTheme from "@/components/layout/toggle-theme"
@@ -43,9 +44,10 @@ export default function Header() {
 					</NavigationMenu>
 				</div>
 				<div className="flex items-center justify-end gap-1.5 lg:flex-1">
-					<div className="hidden gap-2 lg:flex">
+					<div className="hidden items-center justify-center gap-2 lg:flex">
 						{constant.header.showLanguage && <SelectLanguage />}
 						{constant.header.showTheme && <ToggleTheme />}
+						{constant.header.showAuth && <Auth />}
 					</div>
 					<div className="flex lg:hidden">
 						<DrawerHeader />

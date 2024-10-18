@@ -13,7 +13,11 @@ export default function ToggleTheme() {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button variant="outline" size="icon" className="w-12 bg-background/40 backdrop-blur-md focus-visible:ring-0">
+				<Button
+					variant="outline"
+					size="icon"
+					className="size-10 bg-background/40 backdrop-blur-md focus-visible:ring-0"
+				>
 					<Sun size={16} className="block w-full dark:hidden" />
 					<Moon size={16} className="hidden w-full dark:block" />
 					<span className="sr-only">Toggle theme</span>

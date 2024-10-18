@@ -3,6 +3,9 @@ import constant from "@/constants"
 import { ChevronRight } from "lucide-react"
 import { useTranslations } from "next-intl"
 
+import SelectLanguage from "@/components/layout/select-language"
+import ToggleTheme from "@/components/layout/toggle-theme"
+
 export default function Footer() {
 	const t = useTranslations("footer")
 	return (
@@ -17,6 +20,10 @@ export default function Footer() {
 						<p className="mt-3 text-sm text-muted-foreground">
 							Copyright © {new Date().getFullYear()} {constant.name}. All rights reserved.
 						</p>
+						<div className="mt-3 flex gap-2">
+							<SelectLanguage />
+							<ToggleTheme />
+						</div>
 					</div>
 					<div className="-mb-10 mt-10 flex flex-grow flex-wrap justify-center text-center md:mt-0">
 						{constant.footer.links.map((link) => (
