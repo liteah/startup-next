@@ -87,7 +87,19 @@ const appConfig = {
 					headlineCode: "features.headline",
 					titleCode: "features.title",
 				},
+				{
+					headline: "Features 2",
+					title: "What we offer 2",
+					headlineCode: "features.headline",
+					titleCode: "features.title",
+				},
 			],
+			testimonial: {
+				headline: "Testimonial",
+				title: "What our users say",
+				headlineCode: "testimonial.headline",
+				titleCode: "testimonial.title",
+			},
 		},
 	},
 }
