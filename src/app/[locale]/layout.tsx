@@ -7,8 +7,8 @@ import "@/app/globals.css"
 import constant from "@/constants"
 import { locales } from "@/i18n"
 
-import ThemeProvider from "@/components/layout/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
+import ThemeProvider from "@/components/layout/theme-provider"
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
 	const t = await getTranslations({ locale, namespace: "metadata" })
