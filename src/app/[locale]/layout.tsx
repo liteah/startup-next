@@ -8,6 +8,7 @@ import constant from "@/constants"
 import { locales } from "@/i18n"
 
 import ThemeProvider from "@/components/layout/theme-provider"
+import { Toaster } from "@/components/ui/sonner"
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
 	const t = await getTranslations({ locale, namespace: "metadata" })
@@ -41,6 +42,7 @@ export default function RootLayout({
 				<NextIntlClientProvider locale={locale} messages={messages}>
 					<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 						{children}
+						<Toaster richColors />
 					</ThemeProvider>
 				</NextIntlClientProvider>
 			</body>
