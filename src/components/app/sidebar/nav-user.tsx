@@ -7,6 +7,7 @@ import {
 	ChevronsUpDown,
 	CreditCard,
 	Globe,
+	Home,
 	LogOut,
 	MonitorSmartphone,
 	Moon,
@@ -32,6 +33,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar"
 import { usePathname, useRouter } from "@/app/navigation"
+import PreferenceMenu from "@/components/layout/preference-menu"
+import Link from "next/link"
 
 export function NavUser({
 	user,
@@ -87,43 +90,15 @@ export function NavUser({
 						align="end"
 						sideOffset={4}
 					>
-            <DropdownMenuGroup>
-						<DropdownMenuSub>
-							<DropdownMenuSubTrigger>
-								<Globe className="mr-2 size-4" />
-								Languages
-							</DropdownMenuSubTrigger>
-							<DropdownMenuSubContent>
-								{languages.map((language) => (
-									<DropdownMenuItem key={language.lang} onClick={() => onLanguageChange(language.lang)}>
-										{language.label}
-										{currentLocale === language.lang && <span className="ml-2">✓</span>}
-									</DropdownMenuItem>
-								))}
-							</DropdownMenuSubContent>
-						</DropdownMenuSub>
-						<DropdownMenuSub>
-							<DropdownMenuSubTrigger>
-								<SunMoon className="mr-2 size-4" />
-								Theme Mode
-							</DropdownMenuSubTrigger>
-							<DropdownMenuSubContent>
-								<DropdownMenuItem onClick={() => setTheme("light")}>
-									<Sun />
-									Light
-								</DropdownMenuItem>
-								<DropdownMenuItem onClick={() => setTheme("dark")}>
-									<Moon />
-									Dark
-								</DropdownMenuItem>
-								<DropdownMenuItem onClick={() => setTheme("system")}>
-									<MonitorSmartphone />
-									System
-								</DropdownMenuItem>
-							</DropdownMenuSubContent>
-						</DropdownMenuSub>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
+						<Link href="/">
+							<DropdownMenuItem>
+								<Home />
+								Home
+							</DropdownMenuItem>
+						</Link>
+						<DropdownMenuSeparator />
+						<PreferenceMenu />
+						<DropdownMenuSeparator />
 						<DropdownMenuItem onClick={handleLogout}>
 							<LogOut />
 							Log out
