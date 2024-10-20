@@ -1,5 +1,5 @@
 import * as React from "react"
-import { type LucideIcon } from "lucide-react"
+import { CreditCard, LifeBuoy, Send, UserCircle2, type LucideIcon } from "lucide-react"
 
 import {
 	SidebarGroup,
@@ -8,6 +8,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import Link from "next/link"
 
 export function NavSecondary({
 	items,
@@ -33,6 +34,24 @@ export function NavSecondary({
 							</SidebarMenuButton>
 						</SidebarMenuItem>
 					))}
+				</SidebarMenu>
+			</SidebarGroupContent>
+			<SidebarGroupContent>
+				<SidebarMenu>
+					<SidebarMenuItem>
+						<SidebarMenuButton asChild size="sm">
+							<Link href="#">
+								<Send />
+								<span>Feedback</span>
+							</Link>
+						</SidebarMenuButton>
+						<SidebarMenuButton asChild size="sm">
+							<Link href="/settings">
+								<UserCircle2 />
+								<span>Account Settings</span>
+							</Link>
+						</SidebarMenuButton>
+					</SidebarMenuItem>
 				</SidebarMenu>
 			</SidebarGroupContent>
 		</SidebarGroup>

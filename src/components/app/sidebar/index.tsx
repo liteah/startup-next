@@ -137,11 +137,6 @@ const data = {
 			url: "#",
 			icon: LifeBuoy,
 		},
-		{
-			title: "Feedback",
-			url: "#",
-			icon: Send,
-		},
 	],
 	projects: [
 		{
@@ -185,7 +180,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 				<NavProjects projects={data.projects} />
 				<NavSecondary items={data.navSecondary} className="mt-auto" />
 			</SidebarContent>
-			<SidebarFooter>{user && <NavUser user={user} />}</SidebarFooter>
+			<SidebarFooter>{user && <NavUser user={user && {
+				email: user.email || '',
+				user_metadata: {
+					avatar_url: user.user_metadata?.avatar_url,
+					name: user.user_metadata?.name
+				}
+			}} />}</SidebarFooter>
 		</Sidebar>
 	)
 }
