@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import { User } from "@supabase/supabase-js"
-import { Loader2 } from "lucide-react"
 import { toast } from "sonner"
 
 import { supabase } from "@/lib/supabase"
@@ -14,6 +13,7 @@ import { Label } from "@/components/ui/label"
 import { AvatarUploadDialog } from "@/components/app/dialog/avatar-upload"
 import { ConfirmDeletionDialog } from "@/components/app/dialog/confirm-deletion"
 import { PasswordChangeDialog } from "@/components/app/dialog/password-change"
+import Loading from "@/components/app/loading"
 import SideNav, { type NavItem } from "@/components/layout/side-nav"
 
 export default function SettingsPage() {
@@ -72,12 +72,7 @@ export default function SettingsPage() {
 	}
 
 	if (loading) {
-		return (
-			<div className="flex h-screen items-center justify-center">
-				<Loader2 className="mr-2 animate-spin" />
-				<span>Loading...</span>
-			</div>
-		)
+		return <Loading />
 	}
 
 	return (

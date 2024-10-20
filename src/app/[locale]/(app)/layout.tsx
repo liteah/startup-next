@@ -1,3 +1,9 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import { User } from "@supabase/supabase-js"
+
+import { supabase } from "@/lib/supabase"
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -9,8 +15,29 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app/sidebar"
+import { useRouter } from "@/app/navigation"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+	const router = useRouter()
+	const [user, setUser] = useState<User | null>(null)
+
+	useEffect(() => {
+		const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+			setUser(session?.user || null)
+			if (!session?.user) {
+				router.push("/login")
+			}
+		})
+
+		return () => {
+			authListener.subscription.unsubscribe()
+		}
+	}, [router])
+
+	if (!user) {
+		return null
+	}
+
 	return (
 		<SidebarProvider>
 			<AppSidebar />
