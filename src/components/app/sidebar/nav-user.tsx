@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { languages } from "@/i18n"
 import {
 	BadgeCheck,
@@ -32,9 +33,8 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar"
-import { usePathname, useRouter } from "@/app/navigation"
 import PreferenceMenu from "@/components/layout/preference-menu"
-import Link from "next/link"
+import { usePathname, useRouter } from "@/app/navigation"
 
 export function NavUser({
 	user,

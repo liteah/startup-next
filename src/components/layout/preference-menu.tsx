@@ -46,8 +46,8 @@ export default function PreferenceMenu() {
 			</DropdownMenuSub>
 			<DropdownMenuSub>
 				<DropdownMenuSubTrigger>
-					<Sun className="block dark:hidden mr-2 size-4" />
-					<Moon className="hidden dark:block mr-2 size-4" />
+					<Sun className="mr-2 block size-4 dark:hidden" />
+					<Moon className="mr-2 hidden size-4 dark:block" />
 					Appearance
 				</DropdownMenuSubTrigger>
 				<DropdownMenuSubContent>

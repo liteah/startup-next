@@ -3,12 +3,7 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { User } from "@supabase/supabase-js"
-import {
-	Bolt,
-	CircleGauge,
-	CreditCard,
-	LogOut,
-} from "lucide-react"
+import { Bolt, CircleGauge, CreditCard, LogOut } from "lucide-react"
 
 import { supabase } from "@/lib/supabase"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -44,10 +39,10 @@ export default function Auth() {
 					<Button variant="outline" className="rounded-full">
 						<CircleGauge />
 						Dashboard
-				</Button>
-			</Link>
-			<DropdownMenu>
-				<DropdownMenuTrigger>
+					</Button>
+				</Link>
+				<DropdownMenu>
+					<DropdownMenuTrigger>
 						<Avatar>
 							<AvatarImage src={user.user_metadata?.avatar_url} />
 							<AvatarFallback>{user.email?.[0].toUpperCase()}</AvatarFallback>
@@ -86,7 +81,8 @@ export default function Auth() {
 							Log out
 						</DropdownMenuItem>
 					</DropdownMenuContent>
-				</DropdownMenu></>
+				</DropdownMenu>
+			</>
 		)
 	}
 
