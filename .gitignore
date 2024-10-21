@@ -40,3 +40,6 @@ next-env.d.ts
 .env.local
 .env.production
 .env.development
+
+# content-collections
+.content-collections

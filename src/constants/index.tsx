@@ -12,11 +12,6 @@ const appConfig = {
 		showAuth: true,
 		links: [
 			{
-				code: "home",
-				label: "Home",
-				href: "/",
-			},
-			{
 				code: "features",
 				label: "Features",
 				href: "/features",
@@ -25,6 +20,11 @@ const appConfig = {
 				code: "pricing",
 				label: "Pricing",
 				href: "/pricing",
+			},
+			{
+				code: "blog",
+				label: "Blog",
+				href: "/blog",
 			},
 		],
 	},

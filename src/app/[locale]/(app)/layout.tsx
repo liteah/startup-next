@@ -14,9 +14,9 @@ import {
 } from "@/components/ui/breadcrumb"
 import { Separator } from "@/components/ui/separator"
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import DynamicBreadcrumb from "@/components/app/dynamic-breadcrumb"
 import { AppSidebar } from "@/components/app/sidebar"
 import { useRouter } from "@/app/navigation"
-import DynamicBreadcrumb from "@/components/app/dynamic-breadcrumb"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	const router = useRouter()

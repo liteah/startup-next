@@ -5,7 +5,7 @@ import SectionTitle from "@/components/marketing/section-title"
 
 export default function Pricing() {
 	return (
-		<div className="mx-auto my-16 flex max-w-7xl flex-col items-center justify-center gap-10 px-4 py-10 sm:px-6 lg:mb-16 lg:px-8">
+		<div className="container flex max-w-6xl flex-col gap-10 pb-16 pt-32">
 			<BlurFade delay={0.35} inView className="flex flex-col items-center justify-center gap-4">
 				<SectionTitle headline="Pricing" title="Ship your app with confidence" />
 				<p className="text-muted-foreground">

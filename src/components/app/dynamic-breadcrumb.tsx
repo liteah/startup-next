@@ -1,18 +1,19 @@
 "use client"
 
 import { usePathname } from "next/navigation"
+
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 
 const routeMap: { [key: string]: string } = {
-  "/dashboard": "Dashboard",
-  "/settings": "Account Settings",
+	"/dashboard": "Dashboard",
+	"/settings": "Account Settings",
 }
 
 export default function DynamicBreadcrumb() {

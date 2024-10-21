@@ -1,4 +1,5 @@
 import * as React from "react"
+import Link from "next/link"
 import { CreditCard, LifeBuoy, Send, UserCircle2, type LucideIcon } from "lucide-react"
 
 import {
@@ -8,7 +9,6 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import Link from "next/link"
 
 export function NavSecondary({
 	items,
