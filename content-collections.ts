@@ -58,13 +58,22 @@ const posts = defineCollection({
 
 const legalPages = defineCollection({
 	name: "legalPages",
-	directory: "contents/legal",
+	directory: "./src/contents/legals",
 	include: "**/*.{mdx,md}",
 	schema: (z) => ({
 		title: z.string(),
 	}),
 	transform: async (document, context) => {
-		const body = await compileMDX(context, document)
+		const body = await compileMDX(context, document, {
+			rehypePlugins: [
+				[
+					rehypeShiki,
+					{
+						theme: "nord",
+					},
+				],
+			],
+		})
 
 		return {
 			...document,
@@ -77,7 +86,7 @@ const legalPages = defineCollection({
 
 const docsPages = defineCollection({
 	name: "docsPages",
-	directory: "contents/docs",
+	directory: "./src/contents/docs",
 	include: "**/*.{mdx,md}",
 	schema: (z) => ({
 		title: z.string(),
@@ -114,7 +123,7 @@ const docsPages = defineCollection({
 
 const docsMeta = defineCollection({
 	name: "docsMeta",
-	directory: "contents/docs",
+	directory: "./src/contents/docs",
 	include: "**/*.json",
 	parser: "json",
 	schema: () => ({
