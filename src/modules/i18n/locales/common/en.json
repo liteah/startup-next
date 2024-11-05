@@ -1,4 +1,6 @@
 {
+  "brand.name": "NitroStart",
+  "brand.copyright": "All rights reserved.",
   "preferences.theme.light": "Light",
   "preferences.theme.dark": "Dark",
   "preferences.theme.system": "System"

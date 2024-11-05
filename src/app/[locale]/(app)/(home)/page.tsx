@@ -1,3 +1,4 @@
+import { ProductLogo } from '@/components/common/product-logo'
 import { LanguageSwitchIconDropdown } from '@/components/modules/preferences/language/dropdown'
 import { ThemeSwitchDropdown } from '@/components/modules/preferences/theme/dropdown'
 
@@ -7,6 +8,7 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <ThemeSwitchDropdown />
         <LanguageSwitchIconDropdown />
+        <ProductLogo />
       </main>
     </div>
   )
