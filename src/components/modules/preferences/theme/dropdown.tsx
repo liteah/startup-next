@@ -9,11 +9,7 @@ export function ThemeSwitchDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          size="icon"
-          className="size-10"
-        >
+        <Button variant="outline" size="icon">
           <Sun className="block dark:hidden" />
           <Moon className="hidden dark:block" />
         </Button>

@@ -1,25 +1,27 @@
 import { DropdownMenuRadioGroup, DropdownMenuRadioItem } from '@/components/ui/dropdown-menu'
 import { Monitor, Moon, Sun } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 
 export function ThemeSwitchMenu() {
+  const t = useTranslations('preferences.theme')
   const { theme, setTheme } = useTheme()
 
   const iconStyle = 'size-4'
 
   const themes = [
     {
-      label: 'Light',
+      label: t('light'),
       value: 'light',
       icon: <Sun className={iconStyle} />,
     },
     {
-      label: 'Dark',
+      label: t('dark'),
       value: 'dark',
       icon: <Moon className={iconStyle} />,
     },
     {
-      label: 'System',
+      label: t('system'),
       value: 'system',
       icon: <Monitor className={iconStyle} />,
     },
