@@ -1,1 +1,5 @@
-{}
+{
+  "signin.title": "欢迎回来！",
+  "signin.description": "登录您的账户以继续",
+  "oauth.continue-with": "使用 {provider} 继续"
+}

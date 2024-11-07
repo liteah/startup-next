@@ -1,0 +1,127 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  avatar        String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  githubId      String?   @unique
+  googleId      String?   @unique
+  token         UserToken[]
+  memberships   Membership[]
+
+  Session Session[]
+
+  Account Account[]
+}
+
+model UserToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  otp       String?
+  email     String
+  user      User     @relation(fields: [email], references: [email])
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+model Workspace {
+  id          String       @id @default(cuid())
+  name        String
+  avatar      String?
+  plan        Plan         @default(FREE)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  members     Membership[]
+  creatorId   String
+  invitations Invitation[]
+}
+
+model Membership {
+  id          String         @id @default(cuid())
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  workspace   Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  role        WorkspaceRole @default(MEMBER)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@unique([userId, workspaceId])
+}
+
+model Invitation {
+  id          String           @id @default(cuid())
+  email       String
+  workspace   Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  role        WorkspaceRole    @default(MEMBER)
+  status      InvitationStatus @default(PENDING)
+  createdAt   DateTime         @default(now())
+  expiresAt   DateTime
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+enum Plan {
+  FREE
+  PRO
+  ULTIMATE
+}
+
+enum WorkspaceRole {
+  OWNER
+  ADMIN
+  MEMBER
+  VIEWER
+}
+
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  EXPIRED
+}
