@@ -26,7 +26,7 @@ function OAuthButtonGroup() {
           variant="outline"
           onClick={() => {
             signIn(provider.id, {
-              callbackUrl: '/',
+              callbackUrl: '/dashboard',
             })
           }}
         >
