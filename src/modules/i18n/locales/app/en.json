@@ -1,1 +1,9 @@
-{}
+{
+  "settings.general": "General",
+  "settings.security": "Security",
+  "settings.danger": "Danger zone",
+  "settings.name": "Name",
+  "settings.save": "Save",
+  "settings.change": "Change",
+  "settings.delete": "Delete"
+}

@@ -3,5 +3,17 @@
   "signin.description": "登录您的账户以继续",
   "oauth.continue-with": "使用 {provider} 继续",
   "signout.button": "登出",
-  "account.settings.button": "账号设置"
+  "account.settings.button": "账号设置",
+  "account.settings.name": "名称",
+  "account.settings.name-description": "您的显示名称，将应用在您的所有工作区中。",
+  "account.settings.avatar": "头像",
+  "account.settings.avatar-description": "您的头像，将应用在您的所有工作区中。",
+  "account.settings.email": "电子邮件地址",
+  "account.settings.email-description": "您的电子邮件地址，将用于登录和接收通知。",
+  "account.settings.password": "密码",
+  "account.settings.password-description": "您的密码，将用于登录，请妥善保管。",
+  "account.settings.delete-account": "删除账号",
+  "account.settings.delete-account-description": "永久删除您的账号，此操作无法撤销，请三思而后行。",
+  "account.settings.delete-account-detail":
+    "此操作是不可逆的，将永久删除您的账号和所有关联数据。在继续之前，我们建议您导出任何重要的数据。如果您对此过程有任何疑问或顾虑，请联系我们的支持团队以获得进一步帮助。"
 }
