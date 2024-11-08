@@ -1,7 +1,10 @@
 {
   "brand.name": "Nitro 启动",
   "brand.copyright": "版权所有。",
+  "preferences.title": "偏好设置",
+  "preferences.theme.title": "外观",
   "preferences.theme.light": "浅色模式",
   "preferences.theme.dark": "深色模式",
-  "preferences.theme.system": "跟随系统"
+  "preferences.theme.system": "跟随系统",
+  "preferences.language": "语言"
 }

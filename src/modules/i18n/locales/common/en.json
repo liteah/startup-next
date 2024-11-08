@@ -1,7 +1,10 @@
 {
   "brand.name": "NitroStart",
   "brand.copyright": "All rights reserved.",
+  "preferences.title": "Preferences",
+  "preferences.theme.title": "Appearance",
   "preferences.theme.light": "Light",
   "preferences.theme.dark": "Dark",
-  "preferences.theme.system": "System"
+  "preferences.theme.system": "System",
+  "preferences.language": "Languages"
 }

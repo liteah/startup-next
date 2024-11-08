@@ -1,5 +1,6 @@
 'use client'
 
+import { PreferencesMenu } from '@/components/modules/preferences/menu'
 import {
   Avatar,
   AvatarFallback,
@@ -21,13 +22,12 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar'
-import { CaretSortIcon, ComponentPlaceholderIcon } from '@radix-ui/react-icons'
+import { CaretSortIcon } from '@radix-ui/react-icons'
 import {
   BadgeCheck,
-  Bell,
   LogOut,
-  Sparkles,
 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 export function NavUser({
   user,
@@ -38,6 +38,7 @@ export function NavUser({
     avatar: string
   }
 }) {
+  const t = useTranslations()
   const { isMobile } = useSidebar()
 
   return (
@@ -66,44 +67,16 @@ export function NavUser({
             align="end"
             sideOffset={4}
           >
-            <DropdownMenuLabel className="p-0 font-normal">
-              <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-                </Avatar>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">{user.name}</span>
-                  <span className="truncate text-xs">{user.email}</span>
-                </div>
-              </div>
-            </DropdownMenuLabel>
-            <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <Sparkles />
-                Upgrade to Pro
+                <BadgeCheck className="text-muted-foreground" />
+                {t('account.settings.button')}
               </DropdownMenuItem>
             </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <BadgeCheck />
-                Account
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <ComponentPlaceholderIcon />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Bell />
-                Notifications
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
+            <PreferencesMenu />
             <DropdownMenuItem>
-              <LogOut />
-              Log out
+              <LogOut className="text-muted-foreground" />
+              {t('signout.button')}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

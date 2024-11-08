@@ -1,5 +1,7 @@
 {
   "signin.title": "Welcome back!",
   "signin.description": "Sign in to your account to continue",
-  "oauth.continue-with": "Continue with {provider}"
+  "oauth.continue-with": "Continue with {provider}",
+  "signout.button": "Sign Out",
+  "account.settings.button": "Account Settings"
 }

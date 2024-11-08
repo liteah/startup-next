@@ -7,7 +7,7 @@ export function ThemeSwitchMenu() {
   const t = useTranslations('preferences.theme')
   const { theme, setTheme } = useTheme()
 
-  const iconStyle = 'size-4'
+  const iconStyle = 'size-4 text-muted-foreground'
 
   const themes = [
     {
