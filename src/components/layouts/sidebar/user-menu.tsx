@@ -6,13 +6,11 @@ import {
   AvatarFallback,
   AvatarImage,
 } from '@/components/ui/avatar'
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
@@ -27,19 +25,20 @@ import {
   BadgeCheck,
   LogOut,
 } from 'lucide-react'
+import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 
-export function NavUser({
-  user,
-}: {
-  user: {
-    name: string
-    email: string
-    avatar: string
-  }
-}) {
+export function NavUser() {
   const t = useTranslations()
   const { isMobile } = useSidebar()
+  const { data: session } = useSession()
+
+  if (!session?.user)
+    return null
+
+  const user = session.user
+  const displayName = user.name || user.email?.split('@')[0] || 'User'
+  const initials = displayName.slice(0, 2).toUpperCase()
 
   return (
     <SidebarMenu>
@@ -51,11 +50,11 @@ export function NavUser({
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
               <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <AvatarImage src={user.avatar || undefined} alt={displayName} />
+                <AvatarFallback className="rounded-lg">{initials}</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">{user.name}</span>
+                <span className="truncate font-semibold">{displayName}</span>
                 <span className="truncate text-xs">{user.email}</span>
               </div>
               <CaretSortIcon className="ml-auto size-4" />
@@ -74,7 +73,7 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <PreferencesMenu />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={() => signOut()}>
               <LogOut className="text-muted-foreground" />
               {t('signout.button')}
             </DropdownMenuItem>

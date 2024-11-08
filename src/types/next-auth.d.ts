@@ -4,11 +4,15 @@ declare module 'next-auth' {
   interface Session {
     user: {
       id: string
+      avatar?: string
     } & DefaultSession['user']
   }
 
   interface User {
-    googleId?: string | null
-    githubId?: string | null
+    id: string
+    avatar?: string
+    googleId?: string
+    githubId?: string
+    emailVerified?: Date | null
   }
 }

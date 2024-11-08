@@ -56,6 +56,7 @@ export const config = {
     async session({ session, user }: { session: Session, user: User }) {
       if (session.user) {
         session.user.id = user.id
+        session.user.avatar = user.avatar
       }
       return session
     },
