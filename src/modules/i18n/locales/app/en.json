@@ -5,5 +5,10 @@
   "settings.name": "Name",
   "settings.save": "Save",
   "settings.change": "Change",
-  "settings.delete": "Delete"
+  "settings.delete": "Delete",
+  "settings.saving": "Saving...",
+  "settings.saved": "Saved",
+  "settings.error": "Error",
+  "settings.success": "Success",
+  "settings.updated": "Your changes have been applied"
 }

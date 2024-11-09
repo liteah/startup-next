@@ -15,5 +15,7 @@
   "account.settings.delete-account": "删除账号",
   "account.settings.delete-account-description": "永久删除您的账号，此操作无法撤销，请三思而后行。",
   "account.settings.delete-account-detail":
-    "此操作是不可逆的，将永久删除您的账号和所有关联数据。在继续之前，我们建议您导出任何重要的数据。如果您对此过程有任何疑问或顾虑，请联系我们的支持团队以获得进一步帮助。"
+    "此操作是不可逆的，将永久删除您的账号和所有关联数据。在继续之前，我们建议您导出任何重要的数据。如果您对此过程有任何疑问或顾虑，请联系我们的支持团队以获得进一步帮助。",
+  "account.settings.error.name": "名称是必需的",
+  "account.settings.error.email": "无效的电子邮件地址"
 }
