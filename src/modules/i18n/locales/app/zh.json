@@ -1,4 +1,6 @@
 {
+  "workspace.add": "添加工作区",
+  "workspace.group": "全部工作区",
   "settings.general": "常规",
   "settings.security": "安全",
   "settings.danger": "危险区",

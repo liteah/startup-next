@@ -13,8 +13,37 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from '@/components/ui/sidebar'
+import { prisma } from '@/lib/prisma'
+import { config } from '@/modules/auth'
+import { redirect } from 'next/navigation'
+import { getServerSession } from 'next-auth'
 
-export default function Page() {
+interface PageProps {
+  params: {
+    workspaceId: string
+  }
+}
+
+export default async function WorkspacePage({ params }: PageProps) {
+  const session = await getServerSession(config)
+  if (!session?.user?.id)
+    redirect('/signin')
+
+  const membership = await prisma.membership.findUnique({
+    where: {
+      userId_workspaceId: {
+        userId: session.user.id,
+        workspaceId: params.workspaceId,
+      },
+    },
+    include: {
+      workspace: true,
+    },
+  })
+
+  if (!membership)
+    redirect('/workspace')
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -26,13 +55,13 @@ export default function Page() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
+                  <BreadcrumbLink href={`/workspace/${params.workspaceId}`}>
+                    {membership.workspace.name}
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                  <BreadcrumbPage>Overview</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>

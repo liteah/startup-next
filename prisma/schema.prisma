@@ -36,7 +36,7 @@ model UserToken {
 }
 
 model Workspace {
-  id          String       @id @default(cuid())
+  id          String       @id @default(nanoid())
   name        String
   avatar      String?
   plan        Plan         @default(FREE)

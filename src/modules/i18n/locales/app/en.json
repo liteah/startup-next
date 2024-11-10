@@ -1,4 +1,6 @@
 {
+  "workspace.add": "Add workspace",
+  "workspace.group": "Workspaces",
   "settings.general": "General",
   "settings.security": "Security",
   "settings.danger": "Danger zone",
