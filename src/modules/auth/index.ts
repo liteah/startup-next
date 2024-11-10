@@ -1,11 +1,9 @@
-import type { Session, User } from 'next-auth'
 /* eslint-disable node/prefer-global/process */
+import type { Session, User } from 'next-auth'
 import { GoogleLogo } from '@/components/icons/brand/google'
+import { generateId } from '@/lib/id'
 import { adapter, prisma } from '@/lib/prisma'
-import { createDefaultWorkspace } from '@/lib/workspace'
 import { GitHubLogoIcon } from '@radix-ui/react-icons'
-import { customAlphabet } from 'nanoid'
-import NextAuth from 'next-auth'
 import GitHub from 'next-auth/providers/github'
 import Google from 'next-auth/providers/google'
 
@@ -21,8 +19,6 @@ export const providers = [
     logo: GitHubLogoIcon,
   },
 ]
-
-const generateWorkspaceId = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 6)
 
 export const config = {
   adapter,
@@ -63,7 +59,7 @@ export const config = {
       })
 
       if (!existingWorkspace) {
-        const workspaceId = generateWorkspaceId()
+        const workspaceId = generateId()
         await prisma.workspace.create({
           data: {
             id: workspaceId,
@@ -92,5 +88,3 @@ export const config = {
     signIn: '/signin',
   },
 }
-
-export const { auth } = NextAuth(config)

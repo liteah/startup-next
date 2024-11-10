@@ -1,5 +1,10 @@
 {
   "workspace.add": "Add workspace",
+  "workspace.create": "Create workspace",
+  "workspace.description":
+    "Workspaces are shared environments where members can collaborate. After creating a workspace, you can invite others to join.",
+  "workspace.name": "Workspace name",
+  "workspace.create-success": "Workspace created successfully",
   "workspace.group": "Workspaces",
   "settings.general": "General",
   "settings.security": "Security",

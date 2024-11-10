@@ -1,5 +1,6 @@
 'use server'
 
+import { generateId } from '@/lib/id'
 import { prisma } from '@/lib/prisma'
 import { config } from '@/modules/auth'
 import { redirect } from 'next/navigation'
@@ -49,4 +50,33 @@ export async function switchWorkspace(workspaceId: string) {
   }
 
   redirect(`/workspace/${workspaceId}`)
+}
+
+export async function createWorkspace(data: { name: string }) {
+  try {
+    const session = await getServerSession(config)
+    if (!session?.user?.id) {
+      throw new Error('Unauthorized')
+    }
+
+    const workspaceId = generateId()
+    const workspace = await prisma.workspace.create({
+      data: {
+        id: workspaceId,
+        name: data.name,
+        creatorId: session.user.id,
+        members: {
+          create: {
+            userId: session.user.id,
+            role: 'OWNER',
+          },
+        },
+      },
+    })
+
+    return { success: true, workspaceId: workspace.id }
+  }
+  catch (error) {
+    return { success: false, error: (error as Error).message }
+  }
 }

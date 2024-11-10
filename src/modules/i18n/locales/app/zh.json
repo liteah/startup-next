@@ -1,5 +1,10 @@
 {
   "workspace.add": "添加工作区",
+  "workspace.create": "创建工作区",
+  "workspace.description":
+    "工作区是共享环境，成员可以进行协作。创建工作区后，您可以邀请其他人加入。",
+  "workspace.name": "工作区名称",
+  "workspace.create-success": "工作区创建成功",
   "workspace.group": "全部工作区",
   "settings.general": "常规",
   "settings.security": "安全",
