@@ -4,14 +4,15 @@ import { deleteWorkspace, getUserWorkspaces, updateWorkspaceSettings } from '@/a
 
 import { SettingsItem, SettingsTitle } from '@/components/layouts/settings/items'
 import { SettingsNav } from '@/components/layouts/settings/nav'
+import { DeleteModal } from '@/components/modules/modals/delete'
 import { Button } from '@/components/ui/button'
+import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Cog, Loader2, Trash } from 'lucide-react'
 import { useParams, useRouter } from 'next/navigation'
-import { useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -80,8 +81,8 @@ function GeneralSettings() {
       const result = await updateWorkspaceSettings(params.workspaceId as string, values)
 
       if (result.success) {
-        toast.success(t('workspace.settings.success'), {
-          description: t('workspace.settings.updated'),
+        toast.success(t('settings.success'), {
+          description: t('settings.updated'),
         })
       }
       else {
@@ -161,63 +162,18 @@ function GeneralSettings() {
 
 function DangerSettings() {
   const t = useTranslations()
-  const params = useParams()
-  const router = useRouter()
-  const [isLoading, setIsLoading] = useState(false)
-
-  const handleDelete = async () => {
-    if (!confirm(t('workspace.settings.delete-confirm'))) {
-      return
-    }
-
-    setIsLoading(true)
-
-    try {
-      const result = await deleteWorkspace(params.workspaceId as string)
-
-      if (result.success) {
-        toast.success(t('workspace.settings.deleted'))
-        router.push('/workspace')
-      }
-      else {
-        throw new Error(result.error)
-      }
-    }
-    catch (error) {
-      toast.error(t('workspace.settings.error'), {
-        description: (error as Error).message,
-      })
-    }
-    finally {
-      setIsLoading(false)
-    }
-  }
 
   return (
     <div className="flex flex-col gap-4">
       <SettingsTitle title={t('settings.danger')} icon={Trash} separator />
-      <SettingsItem
-        title={t('workspace.settings.delete')}
-        description={t('workspace.settings.delete-description')}
-        vertical
-      >
-        <Button
-          variant="destructive"
-          onClick={handleDelete}
-          disabled={isLoading}
-        >
-          {isLoading
-            ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  {t('workspace.settings.deleting')}
-                </>
-              )
-            : (
-                t('workspace.settings.delete')
-              )}
-        </Button>
-      </SettingsItem>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="destructive" className="w-fit">
+            {t('workspace.settings.delete')}
+          </Button>
+        </DialogTrigger>
+        <DeleteModal type="workspace" />
+      </Dialog>
     </div>
   )
 }
