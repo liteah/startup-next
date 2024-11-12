@@ -18,7 +18,7 @@ export const languages = [
   },
 ]
 
-export const namespaces = ['app', 'auth', 'common']
+export const namespaces = ['app', 'common']
 
 export const locales = languages.map(lang => lang.lang)
 

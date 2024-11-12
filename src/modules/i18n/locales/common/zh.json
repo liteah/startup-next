@@ -6,5 +6,16 @@
   "preferences.theme.light": "浅色模式",
   "preferences.theme.dark": "深色模式",
   "preferences.theme.system": "跟随系统",
-  "preferences.language": "语言"
+  "preferences.language": "语言",
+  "settings.general": "常规",
+  "settings.security": "安全",
+  "settings.danger": "危险区",
+  "settings.save": "保存",
+  "settings.change": "更改",
+  "settings.delete": "删除",
+  "settings.saving": "保存中...",
+  "settings.saved": "已保存",
+  "settings.error": "错误",
+  "settings.success": "成功",
+  "settings.updated": "您的更改已应用"
 }
