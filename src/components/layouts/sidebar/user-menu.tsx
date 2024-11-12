@@ -1,5 +1,6 @@
 'use client'
 
+import { ButtonSkeleton } from '@/components/layouts/sidebar/button-skeleton'
 import { AccountSettings } from '@/components/modules/modals/account-settings'
 import { PreferencesMenu } from '@/components/modules/preferences/menu'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -22,6 +23,11 @@ import { useTranslations } from 'next-intl'
 export function NavUser() {
   const t = useTranslations()
   const { isMobile } = useSidebar()
+  const { status } = useSession()
+
+  if (status === 'loading') {
+    return <ButtonSkeleton />
+  }
 
   return (
     <SidebarMenu>

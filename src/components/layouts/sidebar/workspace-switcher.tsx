@@ -1,11 +1,11 @@
 'use client'
 
 import { getUserWorkspaces, switchWorkspace } from '@/actions/workspace'
+import { ButtonSkeleton } from '@/components/layouts/sidebar/button-skeleton'
 import { CreateWorkspace } from '@/components/modules/modals/create-workspace'
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/components/ui/sidebar'
-import { Skeleton } from '@/components/ui/skeleton'
 import { CaretSortIcon, PlusIcon } from '@radix-ui/react-icons'
 import { House } from 'lucide-react'
 import { useParams } from 'next/navigation'
@@ -47,9 +47,9 @@ export function WorkspaceSwitcher() {
 
   const activeWorkspace = workspaces.find(w => w.id === currentWorkspaceId) || workspaces[0]
 
-  if (isLoading) {
+  if (isLoading || !activeWorkspace) {
     return (
-      <LoadingSkeleton />
+      <ButtonSkeleton />
     )
   }
 
@@ -64,7 +64,7 @@ export function WorkspaceSwitcher() {
                 className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
               >
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <WorkspaceAvatar workspace={activeWorkspace} />
+                  {activeWorkspace && <WorkspaceAvatar workspace={activeWorkspace} />}
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">
@@ -117,31 +117,18 @@ export function WorkspaceSwitcher() {
 }
 
 function WorkspaceAvatar({ workspace }: { workspace: Workspace }) {
-  return (
-    workspace.avatar
-      ? (
-          <img
-            src={workspace.avatar}
-            alt={workspace.name}
-            className="size-4 rounded"
-          />
-        )
-      : (
-          <House className="size-4" />
-        )
-  )
-}
+  if (!workspace)
+    return <House className="size-4" />
 
-function LoadingSkeleton() {
-  return (
-    <SidebarMenu>
-      <SidebarMenuItem className="flex gap-2">
-        <Skeleton className="flex aspect-square size-8 items-center justify-center rounded-lg" />
-        <div className="grid flex-1 text-left text-sm leading-tight">
-          <Skeleton className="h-4 w-full" />
-          <Skeleton className="h-4 w-1/2" />
-        </div>
-      </SidebarMenuItem>
-    </SidebarMenu>
-  )
+  return workspace.avatar
+    ? (
+        <img
+          src={workspace.avatar}
+          alt={workspace.name}
+          className="size-4 rounded"
+        />
+      )
+    : (
+        <House className="size-4" />
+      )
 }
