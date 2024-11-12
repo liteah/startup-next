@@ -80,3 +80,72 @@ export async function createWorkspace(data: { name: string }) {
     return { success: false, error: (error as Error).message }
   }
 }
+
+export async function updateWorkspaceSettings(workspaceId: string, data: {
+  name: string
+  avatar?: string
+}) {
+  try {
+    const session = await getServerSession(config)
+    if (!session?.user?.id) {
+      throw new Error('Unauthorized')
+    }
+
+    const membership = await prisma.membership.findUnique({
+      where: {
+        userId_workspaceId: {
+          userId: session.user.id,
+          workspaceId,
+        },
+      },
+    })
+
+    if (!membership || !['OWNER', 'ADMIN'].includes(membership.role)) {
+      throw new Error('Permission denied')
+    }
+
+    const workspace = await prisma.workspace.update({
+      where: { id: workspaceId },
+      data: {
+        name: data.name,
+        avatar: data.avatar,
+      },
+    })
+
+    return { success: true, workspace }
+  }
+  catch (error) {
+    return { success: false, error: (error as Error).message }
+  }
+}
+
+export async function deleteWorkspace(workspaceId: string) {
+  try {
+    const session = await getServerSession(config)
+    if (!session?.user?.id) {
+      throw new Error('Unauthorized')
+    }
+
+    const membership = await prisma.membership.findUnique({
+      where: {
+        userId_workspaceId: {
+          userId: session.user.id,
+          workspaceId,
+        },
+      },
+    })
+
+    if (!membership || membership.role !== 'OWNER') {
+      throw new Error('Only workspace owner can delete workspace')
+    }
+
+    await prisma.workspace.delete({
+      where: { id: workspaceId },
+    })
+
+    return { success: true }
+  }
+  catch (error) {
+    return { success: false, error: (error as Error).message }
+  }
+}
