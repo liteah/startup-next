@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/common/theme-provider'
+import { ProgressBarProvider } from '@/components/layouts/progress-bar'
 import { Toaster } from '@/components/ui/sonner'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
@@ -17,12 +18,14 @@ export default async function RootLayout({
 }>) {
   const messages = await getMessages()
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <NextIntlClientProvider messages={messages}>
-            {children}
-            <Toaster />
+            <ProgressBarProvider>
+              {children}
+              <Toaster />
+            </ProgressBarProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
