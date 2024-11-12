@@ -22,53 +22,57 @@ import {
   Settings2,
   SquareTerminal,
 } from 'lucide-react'
+import { useParams } from 'next/navigation'
 import * as React from 'react'
 
-const data = {
-  navMain: [
-    {
-      title: 'Dashboard',
-      url: '/',
-      icon: SquareTerminal,
-    },
-    {
-      title: 'Settings',
-      url: '/settings',
-      icon: Settings2,
-    },
-  ],
-  navSecondary: [
-    {
-      title: 'Support',
-      url: '#',
-      icon: LifeBuoy,
-    },
-    {
-      title: 'Feedback',
-      url: '#',
-      icon: Send,
-    },
-  ],
-  projects: [
-    {
-      name: 'Design Engineering',
-      url: '#',
-      icon: Frame,
-    },
-    {
-      name: 'Sales & Marketing',
-      url: '#',
-      icon: PieChart,
-    },
-    {
-      name: 'Travel',
-      url: '#',
-      icon: Map,
-    },
-  ],
-}
-
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const params = useParams()
+  const workspaceId = params.workspaceId as string
+
+  const data = {
+    navMain: [
+      {
+        title: 'Dashboard',
+        url: `/workspace/${workspaceId}`,
+        icon: SquareTerminal,
+      },
+      {
+        title: 'Settings',
+        url: `/workspace/${workspaceId}/settings`,
+        icon: Settings2,
+      },
+    ],
+    navSecondary: [
+      {
+        title: 'Support',
+        url: '#',
+        icon: LifeBuoy,
+      },
+      {
+        title: 'Feedback',
+        url: '#',
+        icon: Send,
+      },
+    ],
+    projects: [
+      {
+        name: 'Design Engineering',
+        url: `/workspace/${workspaceId}/projects/design`,
+        icon: Frame,
+      },
+      {
+        name: 'Sales & Marketing',
+        url: `/workspace/${workspaceId}/projects/sales`,
+        icon: PieChart,
+      },
+      {
+        name: 'Travel',
+        url: `/workspace/${workspaceId}/projects/travel`,
+        icon: Map,
+      },
+    ],
+  }
+
   return (
     <Sidebar variant="inset" collapsible="icon" {...props}>
       <SidebarHeader>
