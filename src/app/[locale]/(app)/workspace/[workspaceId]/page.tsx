@@ -19,12 +19,13 @@ import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     workspaceId: string
-  }
+  }>
 }
 
-export default async function WorkspacePage({ params }: PageProps) {
+export default async function WorkspacePage(props: PageProps) {
+  const params = await props.params
   const session = await getServerSession(config)
   if (!session?.user?.id)
     redirect('/signin')
