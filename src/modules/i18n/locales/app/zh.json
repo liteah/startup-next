@@ -31,5 +31,12 @@
   "account.settings.delete-account-detail":
     "此操作是不可逆的，将永久删除您的账号和所有关联数据。在继续之前，我们建议您导出任何重要的数据。如果您对此过程有任何疑问或顾虑，请联系我们的支持团队以获得进一步帮助。",
   "account.settings.error.name": "名称是必需的",
-  "account.settings.error.email": "无效的电子邮件地址"
+  "account.settings.error.email": "无效的电子邮件地址",
+  "upload.title": "上传图片",
+  "upload.drag": "拖拽或点击选择图片",
+  "upload.drop": "将图片拖拽到这里",
+  "upload.success": "图片上传成功",
+  "upload.removed": "图片移除成功",
+  "upload.error.size": "图片大小必须小于 {size}MB",
+  "upload.uploading": "上传图片中..."
 }

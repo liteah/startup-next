@@ -7,7 +7,7 @@ import { getServerSession } from 'next-auth'
 export async function updateUserGeneralSettings(data: {
   name?: string
   email?: string
-  avatar?: string
+  avatar?: string | null
 }) {
   try {
     const session = await getServerSession(config)
@@ -20,7 +20,7 @@ export async function updateUserGeneralSettings(data: {
       data: {
         name: data.name,
         email: data.email,
-        avatar: data.avatar,
+        avatar: data.avatar ?? '',
       },
     })
 

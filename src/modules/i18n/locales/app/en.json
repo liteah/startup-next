@@ -31,5 +31,12 @@
   "account.settings.delete-account-detail":
     "This action is irreversible and will result in the permanent removal of your account and all associated data from our systems. Before proceeding, we recommend you to export any important data from your account. If you have any questions or concerns about this process, please contact our support team for further assistance.",
   "account.settings.error.name": "Name is required",
-  "account.settings.error.email": "Invalid email address"
+  "account.settings.error.email": "Invalid email address",
+  "upload.title": "Upload image",
+  "upload.drag": "Drag and drop image here, or click to select",
+  "upload.drop": "Drop image here",
+  "upload.success": "Image uploaded successfully",
+  "upload.removed": "Image removed successfully",
+  "upload.error.size": "Image size must be less than {size}MB",
+  "upload.uploading": "Uploading image..."
 }

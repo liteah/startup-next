@@ -1,5 +1,6 @@
-import { updateUserGeneralSettings } from '@/actions/update-user-settings'
+import { updateUserGeneralSettings } from '@/actions/user'
 import { SettingsItem, SettingsTitle } from '@/components/layouts/settings/items'
+import { UploadImage } from '@/components/modules/modals/upload-image'
 import { Button } from '@/components/ui/button'
 import { DialogContent, DialogHeader } from '@/components/ui/dialog'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
@@ -118,7 +119,19 @@ function GeneralSettings() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input {...field} />
+                  <UploadImage
+                    mode="avatar"
+                    currentImage={field.value}
+                    fallback={session?.user?.name?.slice(0, 2).toUpperCase()}
+                    onUploadComplete={(url) => {
+                      field.onChange(url)
+                      form.handleSubmit(onSubmit)()
+                    }}
+                    onRemove={() => {
+                      field.onChange('')
+                      form.handleSubmit(onSubmit)()
+                    }}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
