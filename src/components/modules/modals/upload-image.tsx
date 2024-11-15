@@ -57,6 +57,7 @@ export function UploadImage({
         const formData = new FormData()
         formData.append('file', files[0])
         formData.append('compress', compress.toString())
+        formData.append('mode', mode)
 
         const response = await fetch('/api/upload', {
           method: 'POST',

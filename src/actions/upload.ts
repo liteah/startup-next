@@ -8,6 +8,7 @@ interface UploadOptions {
   compress?: boolean
   maxWidth?: number
   maxHeight?: number
+  forceSquare?: boolean
 }
 
 export async function uploadToR2(
@@ -18,22 +19,35 @@ export async function uploadToR2(
     const bytes = await file.arrayBuffer()
     let processedBuffer: Buffer | ArrayBuffer = bytes
 
-    if (options.compress) {
-      processedBuffer = await Sharp(Buffer.from(bytes))
-        .resize(options.maxWidth || 400, options.maxHeight || 400, {
+    if (options.compress || options.forceSquare) {
+      const image = Sharp(Buffer.from(bytes))
+
+      if (options.forceSquare) {
+        image.resize(400, 400, {
+          fit: 'cover',
+          position: 'center',
+        })
+      }
+      else if (options.compress) {
+        image.resize(options.maxWidth || 400, options.maxHeight || 400, {
           fit: 'inside',
           withoutEnlargement: true,
         })
-        .webp({ quality: 70 })
+      }
+
+      processedBuffer = await image
+        .webp({ quality: 80 })
         .toBuffer()
     }
 
-    const key = `${Date.now()}-${file.name}`
+    const fileName = file.name.replace(/\.[^/.]+$/, '')
+    const key = `${Date.now()}-${fileName}.webp`
+
     const command = new PutObjectCommand({
       Bucket: process.env.R2_BUCKET_NAME,
       Key: key,
       Body: Buffer.from(processedBuffer),
-      ContentType: file.type,
+      ContentType: 'image/webp',
     })
 
     await s3.send(command)
