@@ -125,7 +125,7 @@ function WorkspaceAvatar({ workspace }: { workspace: Workspace }) {
         <img
           src={workspace.avatar}
           alt={workspace.name}
-          className="size-4 rounded"
+          className="rounded"
         />
       )
     : (

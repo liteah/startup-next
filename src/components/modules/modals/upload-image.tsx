@@ -12,6 +12,8 @@ import { toast } from 'sonner'
 
 interface UploadImageProps {
   mode?: 'avatar' | 'image'
+  type?: 'user' | 'workspace'
+  workspaceId?: string
   currentImage?: string
   fallback?: string
   maxSize?: number // in MB
@@ -23,6 +25,8 @@ interface UploadImageProps {
 
 export function UploadImage({
   mode = 'image',
+  type = 'user',
+  workspaceId,
   currentImage,
   fallback = 'U',
   maxSize = 2,
@@ -62,9 +66,16 @@ export function UploadImage({
 
         if (result.success && result.url) {
           if (mode === 'avatar') {
-            const updateResult = await updateUserGeneralSettings({ avatar: result.url })
-            if (!updateResult.success)
-              throw new Error(updateResult.error)
+            if (type === 'user') {
+              const updateResult = await updateUserGeneralSettings({ avatar: result.url })
+              if (!updateResult.success)
+                throw new Error(updateResult.error)
+            }
+            else if (type === 'workspace' && workspaceId) {
+              const updateResult = await updateWorkspaceSettings(workspaceId, { avatar: result.url })
+              if (!updateResult.success)
+                throw new Error(updateResult.error)
+            }
           }
           onUploadComplete?.(result.url)
           setOpen(false)
@@ -86,7 +97,12 @@ export function UploadImage({
   const handleRemove = async () => {
     try {
       if (mode === 'avatar') {
-        await updateUserGeneralSettings({ avatar: '' })
+        if (type === 'user') {
+          await updateUserGeneralSettings({ avatar: '' })
+        }
+        else if (type === 'workspace' && workspaceId) {
+          await updateWorkspaceSettings(workspaceId, { avatar: '' })
+        }
       }
       onRemove?.()
       toast.success(t('upload.removed'))

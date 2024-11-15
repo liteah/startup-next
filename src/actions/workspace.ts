@@ -82,8 +82,8 @@ export async function createWorkspace(data: { name: string }) {
 }
 
 export async function updateWorkspaceSettings(workspaceId: string, data: {
-  name: string
-  avatar?: string
+  name?: string
+  avatar?: string | null
 }) {
   try {
     const session = await getServerSession(config)
@@ -108,7 +108,7 @@ export async function updateWorkspaceSettings(workspaceId: string, data: {
       where: { id: workspaceId },
       data: {
         name: data.name,
-        avatar: data.avatar,
+        avatar: data.avatar ?? '',
       },
     })
 

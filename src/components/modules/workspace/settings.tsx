@@ -5,6 +5,7 @@ import { deleteWorkspace, getUserWorkspaces, updateWorkspaceSettings } from '@/a
 import { SettingsItem, SettingsTitle } from '@/components/layouts/settings/items'
 import { SettingsNav } from '@/components/layouts/settings/nav'
 import { DeleteModal } from '@/components/modules/modals/delete'
+import { UploadImage } from '@/components/modules/modals/upload-image'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
@@ -76,23 +77,17 @@ function GeneralSettings() {
 
   async function onSubmit(values: z.infer<typeof schema>) {
     setIsLoading(true)
-
     try {
       const result = await updateWorkspaceSettings(params.workspaceId as string, values)
-
       if (result.success) {
-        toast.success(t('settings.success'), {
-          description: t('settings.updated'),
-        })
+        toast.success(t('settings.success'))
       }
       else {
         throw new Error(result.error)
       }
     }
     catch (error) {
-      toast.error(t('workspace.settings.error'), {
-        description: (error as Error).message,
-      })
+      toast.error((error as Error).message)
     }
     finally {
       setIsLoading(false)
@@ -104,8 +99,8 @@ function GeneralSettings() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <SettingsTitle title={t('settings.general')} icon={Cog} />
         <SettingsItem
-          title={t('account.settings.name')}
-          description={t('account.settings.name-description')}
+          title={t('workspace.settings.name')}
+          description={t('workspace.settings.name-description')}
           vertical
         >
           <FormField
@@ -122,8 +117,8 @@ function GeneralSettings() {
           />
         </SettingsItem>
         <SettingsItem
-          title={t('account.settings.avatar')}
-          description={t('account.settings.avatar-description')}
+          title={t('workspace.settings.avatar')}
+          description={t('workspace.settings.avatar-description')}
           vertical
         >
           <FormField
@@ -132,7 +127,21 @@ function GeneralSettings() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input {...field} />
+                  <UploadImage
+                    mode="avatar"
+                    type="workspace"
+                    workspaceId={params.workspaceId as string}
+                    currentImage={field.value}
+                    fallback={form.getValues('name')?.slice(0, 2).toUpperCase()}
+                    onUploadComplete={(url) => {
+                      field.onChange(url)
+                      form.handleSubmit(onSubmit)()
+                    }}
+                    onRemove={() => {
+                      field.onChange('')
+                      form.handleSubmit(onSubmit)()
+                    }}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -151,9 +160,7 @@ function GeneralSettings() {
                   {t('settings.saving')}
                 </>
               )
-            : (
-                t('settings.save')
-              )}
+            : t('settings.save')}
         </Button>
       </form>
     </Form>
