@@ -1,9 +1,10 @@
 /* eslint-disable node/prefer-global/process */
-import type { Session, User } from 'next-auth'
+import type { AuthOptions, Session, User } from 'next-auth'
 import { GoogleLogo } from '@/components/icons/brand/google'
 import { generateId } from '@/lib/id'
 import { adapter, prisma } from '@/lib/prisma'
 import { GitHubLogoIcon } from '@radix-ui/react-icons'
+import NextAuth from 'next-auth'
 import GitHub from 'next-auth/providers/github'
 import Google from 'next-auth/providers/google'
 
@@ -88,3 +89,4 @@ export const config = {
     signIn: '/signin',
   },
 }
+export const { auth, handlers } = NextAuth(config as AuthOptions)

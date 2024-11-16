@@ -1,17 +1,18 @@
 'use client'
 
-import type { ChangeEvent } from 'react'
+import { setUserLocale } from '@/actions/locale'
 import { DropdownMenuRadioGroup, DropdownMenuRadioItem } from '@/components/ui/dropdown-menu'
 import { languages } from '@/modules/i18n'
-import router from 'next/router'
 import { useLocale } from 'next-intl'
+import { startTransition } from 'react'
 
 export function LanguageSwitchMenu() {
   const currentLocale = useLocale()
 
   function setLocale(locale: string) {
-    document.cookie = `NEXT_LOCALE=${locale};`
-    window.location.reload()
+    startTransition(() => {
+      setUserLocale(locale)
+    })
   }
 
   return (
