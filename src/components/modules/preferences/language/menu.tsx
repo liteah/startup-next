@@ -3,16 +3,16 @@
 import { setUserLocale } from '@/actions/locale'
 import { DropdownMenuRadioGroup, DropdownMenuRadioItem } from '@/components/ui/dropdown-menu'
 import { languages } from '@/modules/i18n'
+import { useRouter } from 'next/navigation'
 import { useLocale } from 'next-intl'
-import { startTransition } from 'react'
 
 export function LanguageSwitchMenu() {
   const currentLocale = useLocale()
+  const router = useRouter()
 
-  function setLocale(locale: string) {
-    startTransition(() => {
-      setUserLocale(locale)
-    })
+  async function setLocale(locale: string) {
+    await setUserLocale(locale)
+    router.refresh()
   }
 
   return (
