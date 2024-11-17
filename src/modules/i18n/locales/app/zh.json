@@ -1,8 +1,11 @@
 {
-  "signin.title": "欢迎回来！",
-  "signin.description": "登录您的账户以继续",
-  "oauth.continue-with": "使用 {provider} 继续",
-  "signout.button": "登出",
+  "auth.signin.title": "欢迎回来！",
+  "auth.signin.description": "登录您的账户以继续",
+  "auth.signin.or": "或继续使用",
+  "auth.oauth.continue-with": "使用 {provider} 继续",
+  "auth.email.placeholder": "输入您的电子邮件地址",
+  "auth.email.continue": "继续使用电子邮件",
+  "auth.signout.button": "登出",
   "workspace.add": "添加工作区",
   "workspace.create": "创建工作区",
   "workspace.description":

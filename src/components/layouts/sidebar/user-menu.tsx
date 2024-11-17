@@ -66,7 +66,7 @@ export function NavUser() {
               <PreferencesMenu />
               <DropdownMenuItem onClick={() => signOut()}>
                 <LogOut className="text-muted-foreground" />
-                {t('signout.button')}
+                {t('auth.signout.button')}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

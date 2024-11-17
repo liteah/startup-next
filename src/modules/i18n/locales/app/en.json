@@ -1,8 +1,11 @@
 {
-  "signin.title": "Welcome back!",
-  "signin.description": "Sign in to your account to continue",
-  "oauth.continue-with": "Continue with {provider}",
-  "signout.button": "Sign Out",
+  "auth.signin.title": "Welcome back!",
+  "auth.signin.description": "Sign in to your account to continue",
+  "auth.signin.or": "OR CONTINUE WITH",
+  "auth.oauth.continue-with": "Continue with {provider}",
+  "auth.email.continue": "Continue with email",
+  "auth.email.placeholder": "Enter your email address",
+  "auth.signout.button": "Sign Out",
   "workspace.add": "Add workspace",
   "workspace.create": "Create workspace",
   "workspace.description":
